@@ -20,12 +20,15 @@ public class SentimentTester
         List<TweetWithSentiment> candidates = new ArrayList<>();
         for(TweetWithSentiment tweet: this.sentiments)
         {
-            String sentiment = this.nlpWrapper.computeSentiment(tweet.tweetText);
+            String sentiment = this.nlpWrapper
+                                .computeSentiment(tweet.tweetText)
+                                .getSentiment();
+                                
             tweet.setAssignedSentiment(sentiment);
             candidates.add(tweet);
             counter++;
 
-            if(counter > 200)
+            if(counter > 10)
             {
                 break;
             }            

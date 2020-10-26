@@ -7,11 +7,7 @@ import java.util.Scanner;
 
 public class CsvFileProcessor
 {
-    
-    String filePath;
-    public CsvFileProcessor(String path) {
-        this.filePath  = path;
-    } 
+    public CsvFileProcessor() {} 
 
     TweetWithSentiment getTweetFromString(String line) 
     {
@@ -26,11 +22,11 @@ public class CsvFileProcessor
         }        
     }
 
-    public List<TweetWithSentiment> sentimentsFromFile() throws Exception
+    public List<TweetWithSentiment> sentimentsFromFile(String filePath) throws Exception
     {
         List<TweetWithSentiment> tweets = new ArrayList<>();
         int lineCounter = 0;
-        try(Scanner scanner = new Scanner(new File(this.filePath));)
+        try(Scanner scanner = new Scanner(new File(filePath));)
         {
             while(scanner.hasNextLine())
             {

@@ -14,8 +14,8 @@ public class App
     
     public static void main( String[] args ) throws Exception
     {
-        CsvFileProcessor processor = new CsvFileProcessor("data/Tweets.csv");
-        List<TweetWithSentiment> originalSentiments = processor.sentimentsFromFile();
+        CsvFileProcessor processor = new CsvFileProcessor();
+        List<TweetWithSentiment> originalSentiments = processor.sentimentsFromFile("data/Tweets.csv");
         SentimentTester tester = new SentimentTester(originalSentiments);
         tester.runTester();
     }

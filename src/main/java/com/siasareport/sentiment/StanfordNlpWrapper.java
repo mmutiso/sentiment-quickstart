@@ -22,7 +22,7 @@ public class StanfordNlpWrapper
         props.setProperty("annotators", "tokenize, ssplit, parse, sentiment");
         pipeline = new StanfordCoreNLP(props);
     }
-    public String computeSentiment( String text)
+    public SentimentResponse computeSentiment( String text)
     {        
         int mainSentiment = -100;
         int longestSentenceLength = 0;
@@ -49,8 +49,8 @@ public class StanfordNlpWrapper
             mainSentimentStr = parseSentiment(mainSentiment);
             confidence = sm.get(mainSentiment);
         }   
-        //build an object with main sentiment and confidence     
-        return mainSentimentStr;
+        SentimentResponse response = new SentimentResponse(mainSentimentStr, confidence);    
+        return response;
     }
 
     String parseSentiment(int sentiment)
